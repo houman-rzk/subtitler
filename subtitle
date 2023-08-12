@@ -45,7 +45,7 @@ then
   exit 1
 fi
 
-source "${0%/*}"/subtitler/bin/activate
+source "${0%/*}"/bin/activate
 
 if ! argospm list | grep -q "translate-${from_lang}_${to_lang}"
 then

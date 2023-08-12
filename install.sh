@@ -2,9 +2,9 @@
 
 # Dependencies: python, pip, virtualenv (python), git
 
-dir="subtitler"
+git clone https://github.com/houman-rzk/subtitler
 
-python -m virtualenv "$dir"
-source "$dir"/bin/activate
+python -m virtualenv subtitler
+source subtitler/bin/activate
 
 pip install openai-whisper argostranslate

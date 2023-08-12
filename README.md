@@ -1,7 +1,7 @@
 # subtitler
 A script for generating subtitles in any language for a video/audio in any other language.
 
-It uses [OpenAI's Whisper]() for creating the transcription and [argostranslate]() to translate it.
+It uses [OpenAI's Whisper](https://github.com/openai/whisper) for creating the transcription and [argostranslate](https://pypi.org/project/argostranslate) to translate it.
 
 
 ## Requirements
@@ -11,6 +11,11 @@ It uses [OpenAI's Whisper]() for creating the transcription and [argostranslate]
 - virtualenv (python)
 - git
 
+### Hardware
+- Around 9GB of storage space
+
+
+
 
 ## Installation
 `source <(curl -Ls https://raw.githubusercontent.com/houman-rzk/subtitler/master/install.sh)`
@@ -18,5 +23,5 @@ Running the previous command will create a new directory that contains the pytho
 
 
 ## Running
-`subtitle -f <from language> -t <to language> -s <file>` to generate subtitles
-`subtitle -h` for help
+`subtitler/subtitle -f <from language> -t <to language> -s <file>` to generate subtitles
+`subtitler/subtitle -h` for help
