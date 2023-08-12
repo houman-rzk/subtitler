@@ -18,10 +18,12 @@ It uses [OpenAI's Whisper](https://github.com/openai/whisper) for creating the t
 
 
 ## Installation
-`source <(curl -Ls https://raw.githubusercontent.com/houman-rzk/subtitler/master/install.sh)`
+`bash <(curl -Ls https://raw.githubusercontent.com/houman-rzk/subtitler/master/install.sh)`
+
 Running the previous command will create a new directory that contains the python virtual enviroment and the final (runnable) script.
 
 
 ## Running
 `subtitler/subtitle -f <from language> -t <to language> -s <file>` to generate subtitles
+
 `subtitler/subtitle -h` for help

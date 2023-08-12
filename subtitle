@@ -62,3 +62,5 @@ mv "/tmp/$source_basename_noext.$sub_format" "original.$sub_format"
 printf "\n${sep}Translating with argostranslate${sep}\n"
 argos-translate --from "$from_lang" --to "$to_lang" < "original.$sub_format" \
 > "$to_lang.$sub_format"
+
+printf "\n${sep}Done${sep}\n"
