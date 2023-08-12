@@ -55,7 +55,7 @@ fi
 
 printf "\n${sep}Transcribing with whisper${sep}\n"
 whisper --output_dir /tmp --output_format srt --language "$from_lang" "$source_file"
-mv "/tmp/$source_basename_noext.srt" > "original.srt"
+mv "/tmp/$source_basename_noext.srt" "original.srt"
 
 printf "\n${sep}Translating with argostranslate${sep}\n"
 argos-translate --from "$from_lang" --to "$to_lang" < "original.srt" | \
