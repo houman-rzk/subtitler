@@ -12,15 +12,15 @@ It uses [OpenAI's Whisper](https://github.com/openai/whisper) for creating the t
 - git
 
 ### Hardware
-- Around 9GB of storage space
+- Around 5GB of free storage space
 
 
 
 
 ## Installation
-`bash <(curl -Ls https://raw.githubusercontent.com/houman-rzk/subtitler/master/install.sh)`
+Create the installation directory and virtual environment by running:
 
-Running the previous command will create a new directory that contains the python virtual enviroment and the final (runnable) script.
+`bash <(curl -Ls https://raw.githubusercontent.com/houman-rzk/subtitler/master/install.sh)`
 
 
 ## Running
