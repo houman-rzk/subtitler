@@ -1,7 +1,5 @@
 #!/bin/sh
 
-sub_format=srt #txt,vtt,srt,tsv,json,all
-
 sep="========================"
 
 ## Functions
@@ -56,11 +54,11 @@ translate-${from_lang}_${to_lang}${sep}\n"
 fi
 
 printf "\n${sep}Transcribing with whisper${sep}\n"
-whisper --output_dir /tmp --output_format "$sub_format" --language "$from_lang" "$source_file"
-mv "/tmp/$source_basename_noext.$sub_format" "original.$sub_format"
+whisper --output_dir /tmp --output_format srt --language "$from_lang" "$source_file"
+sed 's/--[^0-9]*/--> /g' "/tmp/$source_basename_noext.srt" > "original.srt"
 
 printf "\n${sep}Translating with argostranslate${sep}\n"
-argos-translate --from "$from_lang" --to "$to_lang" < "original.$sub_format" \
-> "$to_lang.$sub_format"
+argos-translate --from "$from_lang" --to "$to_lang" < "original.srt" \
+> "$to_lang.srt"
 
 printf "\n${sep}Done${sep}\n"

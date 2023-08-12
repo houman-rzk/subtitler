@@ -4,16 +4,17 @@ A script for generating subtitles in any language for a video/audio in any other
 It uses [OpenAI's Whisper](https://github.com/openai/whisper) for creating the transcription and [argostranslate](https://pypi.org/project/argostranslate) to translate it.
 
 
+
 ## Requirements
 ### Dependencies
 - python
 - pip
 - virtualenv (python)
 - git
+- ffmpeg
 
 ### Hardware
 - Around 5GB of free storage space
-
 
 
 
