@@ -1,0 +1,64 @@
+#!/bin/sh
+
+sub_format=srt #txt,vtt,srt,tsv,json,all
+
+sep="========================"
+
+## Functions
+displayHelp() {
+  echo "
+Usage:
+  $(basename "$0") -f <from language> -t <to language> -s <file>
+  $(basename "$0") -h
+
+Parameters:
+  <from language>: Original video/audio language (en,es,ru...) \
+(see supported languages here: https://pypi.org/project/argostranslate/)
+  <to language>: Final/translation language (en,es,ru...) \
+(see supported languages here: https://pypi.org/project/argostranslate/)
+  <file>: Video/audio file to translate
+
+Examples:
+  $(basename "$0") -f en -t es -s video.mp4"
+}
+
+
+## The script
+optstring="hf:t:s:"
+
+while getopts $optstring opt ; do
+  case $opt in
+    h) displayHelp ; exit 1 ;;
+    f) from_lang="$OPTARG" ;;
+    t) to_lang="$OPTARG" ;;
+    s) source_file="$OPTARG" ;;
+  esac
+done ;
+
+source_basename_noext="$(basename -s ".${source_file##*.}" "$source_file")"
+
+if [ -z "$from_lang" ] \
+  || [ -z "$to_lang" ] \
+  || [ -z "$source_file" ]
+then
+  displayHelp
+  exit 1
+fi
+
+source "${0%/*}"/subtitler/bin/activate
+
+if ! argospm list | grep -q "translate-${from_lang}_${to_lang}"
+then
+  printf "\n${sep}Installing argos-translate module \
+translate-${from_lang}_${to_lang}${sep}\n"
+  argospm update
+  argospm install "translate-${from_lang}_${to_lang}" || exit 1
+fi
+
+printf "\n${sep}Transcribing with whisper${sep}\n"
+whisper --output_dir /tmp --output_format "$sub_format" --language "$from_lang" "$source_file"
+mv "/tmp/$source_basename_noext.$sub_format" "original.$sub_format"
+
+printf "\n${sep}Translating with argostranslate${sep}\n"
+argos-translate --from "$from_lang" --to "$to_lang" < "original.$sub_format" \
+> "$to_lang.$sub_format"
