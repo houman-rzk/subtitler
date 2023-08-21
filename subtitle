@@ -43,7 +43,8 @@ then
   exit 1
 fi
 
-source "${0%/*}"/bin/activate
+script="$(readlink -f "$0")"
+source "${script%/*}"/bin/activate
 
 if ! argospm list | grep -q "translate-${from_lang}_${to_lang}"
 then
