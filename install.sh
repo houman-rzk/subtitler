@@ -4,7 +4,7 @@
 
 git clone https://github.com/houman-rzk/subtitler
 
-python -m virtualenv subtitler
+python -m venv subtitler
 source subtitler/bin/activate
 
 pip install openai-whisper argostranslate

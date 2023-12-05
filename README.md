@@ -9,7 +9,7 @@ It uses [OpenAI's Whisper](https://github.com/openai/whisper) for creating the t
 ### Dependencies
 - python
 - pip
-- virtualenv (python)
+- venv (python)
 - git
 - ffmpeg
 
@@ -21,7 +21,7 @@ It uses [OpenAI's Whisper](https://github.com/openai/whisper) for creating the t
 ## Installation
 Create the installation directory and virtual environment by running:
 
-`bash <(curl -Ls https://raw.githubusercontent.com/houman-rzk/subtitler/master/install.sh)`
+`curl -Ls https://raw.githubusercontent.com/houman-rzk/subtitler/master/install.sh | sh`
 
 
 ## Running
